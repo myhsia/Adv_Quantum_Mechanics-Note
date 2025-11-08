@@ -1,0 +1,391 @@
+%  !TeX root = ../main.tex
+
+\chapter{Symmetry}
+
+\paragraph{What is symmetry?}
+
+\begin{enumext}
+  \item Leibniz: Symmetry is \emph{indiscernability of
+    \sout{differences} changes \textrightarrow transformations}.
+  \item Physical: invariance (under) transformations.
+\end{enumext}
+
+\subparagraph{Action part.}
+
+V is the Hilbert space, and we have a map $V \mapsto V$, which is
+the operator. The map is invertible.
+Transformation stands for something like $X \mapsto \Omega(X)$,
+i.e., map something to something else, but ``something else''
+is in the same space, such as mapping a vector to a vector.
+For example,
+\[
+\begin{cases*}
+  \ket|\psi>  \mapsto \hat\Omega \ket|\psi>,& Transformation of state\\
+  \hat O      \mapsto \hat\Omega \hat O \hat\Omega^{-1},
+& Transformation of Operator\\
+  \phi(x)     \mapsto (\Omega \phi)(x),     & Path Integral
+\end{cases*}
+\]
+
+\subparagraph{Invariance part.}
+
+When $X \sim Y$, i.e., $X$ is equivalent to $Y$, then it calles the
+invariance.
+After the map, we get something equivalent to $X$: $\Omega(x) \sim X$.
+The invariance in the context can be, for example
+\[
+  \text{equations / constraints}\ \Omega(x) \sim X \longrightarrow
+  \begin{cases*}
+    \Omega \ket|\psi> = \ket|\psi> \upe^{\iu\varphi} &
+    Transformation of state\\
+    \hat\Omega \hat H \hat\Omega^{-1} = \hat H       &
+    Transformation of Operator\\
+    \mathcal S[\phi] = \mathcal S[\Omega\phi]        &
+    Path Integral
+  \end{cases*}
+\]
+To symmetry, $\Omega(x) \sim X$ is just equations/constraints:
+Each equation is a kind of constraint on the object.
+
+\vskip1ex \hrule
+\subparagraph{Symmary}
+
+For symmetry constraints, what constraints do is a limited possibility:
+it is simplicity, or what understandability comes from.
+How this happens is related to \emph{Symmetry \& Group Theory.}
+
+The group is a set: we consider a set of transformation $\Omega_i$
+\[
+  G = \{\Omega_i\}, \qq{and the operation} \Omega_1 \circ \Omega_2
+\]
+The operation says that $\circ:\ G \times G \to G$.
+Concerning the basic properties of Group
+\begin{enumext}
+  \item Closure: If $\Omega_{1,2}(X) \sim X$, then the combination
+  $\Omega_1(\Omega_2(X)) \sim \Omega_i(X) \sim X$ is also in this set.
+  \item Identity: Also okay, to do nothing.
+  \item Inverse: We can have $\Omega(X) \sim X$ then do the inverse
+  $\Omega^{-1}$ on both side
+  \[
+    X \sim \Omega^{-1}(X)
+  \]
+  By equivalent, this is so-called the inflective.
+  \item Associativity: Such as by Hamiltonian, etc.
+\end{enumext}
+Referring to the Group theory, we shall talk about the
+
+\section{Group Representation Theory}
+
+\begin{enumext}
+  \item Group: Introduce the space; elementary ``particles''
+  \item Representation: We can ``lable'' (name) all the representations
+  \begin{enumext}
+    \item Different labels, which is closely related to conserved quantities
+    (quantum numbers);
+    \item Dimension: closely related to degeneracy.
+  \end{enumext}
+\end{enumext}
+
+\subsection{Translation}
+
+A trivial example is just to move the entire function $\phi(x)$ towards one
+direction by $a$, we get
+\[
+  \phi(x) \mapsto \phi(x - a) \equiv \tilde \phi(x)
+\]
+where $x \in \mathbb R$. And we can define the translation operator $\hat T_a$
+\[
+  \phi(x - a) = \tilde \phi(x) = (\hat T_a\phi)(x)
+\]
+where $\phi(x)$ is the wavefunction, and we can get the new state
+\[
+  \phi(x) = \braket<x|\phi> \mapsto \phi(x - a) = \braket<x|\hat T_a\phi>
+\]
+Try to write it in the way of expansion
+\[
+  \hat T_a\ket|\phi> = \int \d x \ket|x> \braket<x|\hat T_a\phi>
+= \int \d x \ket|x> \phi(x - a)
+\xlongequal{\tilde x = x - a} \int \d x \ket|x - a> \phi(x)
+\]
+So, this transformation operator is a linear operator.
+Insert the identity
+\[
+  \ket|\phi> = \int \d x \ket|x> \braket<x|\phi>, \qq{then,}
+  \hat T_a\ket|\phi> = \int \d x \hat T_a \ket|x> \phi(x)
+\]
+In short, we have
+\[
+  \hat T_a\ket|x> = \ket|x + a>
+\]
+If $\ket|x>$ refers to a delta function $\delta(x)$, then the transformation
+just move it to $\delta(x + a)$.
+To write $T_a$ in basis
+\[
+  \hat T_a = \int \d x \ketbra|x + a><x|
+\]
+\paragraph{Quiz.}
+Try to compute $\hat T_a \hat T_b$.
+\[
+  \hat T_a \hat T_b = \hat T_{a+b=b_a} = \hat T_b \hat T_a
+\]
+
+\subsection{Reflection}
+
+\[
+  \phi(x) \mapsto \phi(2a - x)
+\]
+We call the operation $\rho_a$.
+The same logic.
+\[
+  \hat\rho_a\ket|\phi> = \int \d x \ket|x> \braket<x|\hat\rho_a\phi>
+= \int \d x \ket|x> \phi(2a - x) = \int \d x \ket|2a - x> \phi(x)
+\]
+\textbf{Remember no minus sign here: the integration range also reversed.}
+So, we obtain
+\[
+  \hat \rho_a\ket|x> = \ket|2a - x>
+\]
+\paragraph{Quiz}
+Compute $\hat \rho_a \hat \rho_b$.
+\[
+  \hat\rho_a \hat\rho_b = \hat T_{2a - ab}
+\]
+
+\paragraph{Quiz}
+Compute $\hat \rho_a \hat \rho_b \hat \rho_c$.
+\[
+  \hat\rho_a \hat\rho_b \hat\rho_c = \hat \rho_{a-b+c}
+\]
+There are some identities
+\begin{align}
+  \hat\rho_a^2 & = \identity,\\
+  \hat\rho_a \hat\rho_b & \neq \hat\rho_b \hat\rho_a, \qq{where $a \neq b$}
+\end{align}
+
+\paragraph{Quiz}
+Prove if $\hat T_a \hat \rho_b \overset?= \hat\rho_b\hat T_a$.
+\[
+  \hat T_a = \rho_{a/2} \rho_0
+\]
+So, $\hat T_a \hat \rho_b = \rho_{a/2+b}$, and
+$\hat\rho_b\hat T_a = \rho_{b-a/2}$. They are not equal.
+
+\subsection{Invariance}
+
+\paragraph{With translation}
+
+If we compose
+\[
+  \hat T_a \ket|\phi> = \upe^{\iu\phi} \ket|\phi>
+\]
+then, the wavefunction $\braket<x|\phi>$ must be periodic.
+\emph{The formula above becomes the eigen equation.}
+We can consider it as a complex plane wave $\upe^{\iu kx}$, i.e.,
+a series loop, perpendicular to $x$.
+Then, the wavelength is proportional to the period.
+
+\paragraph{With Reflection}
+
+Consider the eigen value equation
+\[
+  \hat\rho_a \ket|\psi> = \upe^{\iu\varphi} \ket|\psi>
+\]
+and we have the identity $\hat\rho_a^2 = \identity$,
+then, the eigenvalue $\lambda^2 = 1$, $\lambda = \pm 1$.
+
+Let $a \in \mathbb R$, which is continuous,
+then we can have $\hat T_a \xlongrightarrow{a\to0} \identity$.
+
+Consider a seires of atoms and the mirror planes,
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- (7,0);
+    \foreach \a in {1,2,...,6}
+      {
+        \draw (\a,0) circle (.1);
+        \draw [dashed] ({\a + .5},1) --++ (0,-2);
+      }
+    \draw [->] (3.5,-1) --++ (1,0) node [below, midway] {$\hat T_a$};
+  \end{tikzpicture}
+\end{center}
+the two mirror planes is related to $\hat T_a$.
+It is not possible to have a $a$ to make $\hat \rho_a \to \identity$.
+
+With the two examples above, we can generalize
+\paragraph{General Transformation $\hat\Omega$}
+
+The operator $\hat \Omega$ is unitary, and sometimes it can be anti-unitary,
+and it is time-reversal.
+The operator acts on states (vectors in Hilbert Space)
+\[
+  \ket|\psi> \mapsto \hat\Omega\ket|\psi>
+= \sum_\alpha \hat\Omega \ket|\alpha> \psi(\alpha)
+\]
+always induce an action $\hat \Omega$ on operators
+\[
+  \hat O = \sum_{\alpha\beta} O_{\alpha\beta} \ketbra|\alpha><\beta|
+\]
+Then, the action $\hat \Omega$ on operators always induce
+\[
+  \hat O \mapsto
+  \sum_{\alpha\beta} O_{\alpha\beta} \ketbra|\Omega\alpha><\Omega\beta|
+\]
+It is trivial that $\ket|\Omega\alpha> = \Omega\ket|\alpha>$,
+but $\bra<\Omega\beta| = \bra<\beta|\Omega^{-1}$.
+$\Omega$ is unitary, means that whatever $v$,
+\[
+  \braket<\Omega u|v> = \braket<\Omega^{-1}\Omega u|\Omega^{-1}v>
+= \braket<u|\Omega^{-1}|v>.
+\]
+So, we have
+\[
+  \sum_{\alpha\beta} O_{\alpha\beta} \ketbra|\Omega\alpha><\Omega\beta|
+= \hat\Omega \hat O\hat\Omega^{-1}
+\]
+
+\section{Continuous symmetry and conservation laws}
+
+\subsection{Continuous symmetry}
+
+\underline{Continuous is connected to $\identity$}
+\[\begin{array}{ccc}
+  \hat\Omega_\theta &
+  \xlongleftrightarrow[\hat\Omega_\epsilon = \identity-\iu\epsilon\hat g]
+    {\text{infinitesimal}} & \hat g\\
+  \downarrow &  & \downarrow\\
+  \text{Unitary} & & \text{Hermition}
+\end{array}\]
+We can give the
+\begin{theorem}[Stone's theorem]
+  $\forall u$, $v$, the inner product
+  \[
+    \braket<u|v> = \braket<\Omega_\epsilon u|\Omega_\epsilon v>
+  \]
+  \begin{proof}
+    \[
+      \cancel{\braket<u|v>}
+    = \cancel{\braket<u|v>}
+    + \iu\epsilon(\braket<\hat gu|v> - \braket<u|\hat gv>)
+    \]
+    then, we obtain
+    \[
+      \braket<\hat gu|v> = \braket<u|\hat gv>
+    \]
+    and the adjoint
+    \[
+      \braket<\hat Ou|v> = \braket<u|\hat O'v>
+    \]
+    If this is illegal $\forall u$, $v$, then we have
+    \[
+      \hat O' = \hat O^\dagger = \hat O
+    \]
+  \end{proof}
+\end{theorem}
+So, the generator $\hat g$ in this sense can be expressed as
+\[
+  \hat g = \iu\frac{\hat\Omega_\epsilon - \identity}{\epsilon}
+            \bigg|_{\epsilon\to0}
+= \iu \odv{\hat\Omega_\theta}\theta \bigg|_{\theta=0}
+\]
+\paragraph{With translation}
+
+Given the definition
+\[
+  \hat T_a\ket|x> = \ket|x + a>
+\]
+then, consider $\hat T_a \hat x \hat T_a^{-1}$.
+SInce $\hat x = \int \d x \ketbra|x> x <x|$
+\[
+  \hat T_a \hat x \hat T_a^{-1}
+= \int \d x \ketbra|x - a> x <x + a| = \hat x - a
+\]
+Assume $a \to \epsilon$, then, we have
+\[
+  \hat T_\epsilon \hat x \hat T_\epsilon^{-1} = \hat x - \epsilon
+\]
+Substitute $\hat T_\epsilon = \identity - \iu\epsilon\hat g_T$, we have
+\[
+  (\identity - \iu\epsilon \hat g_T) \hat x (\identity + \iu\epsilon \hat g_1)
+- \iu\epsilon(\hat g_T\hat x - \hat x \hat g_T) = -\epsilon
+\]
+which means
+\[
+  [\hat x, \hat g_T] = \iu, \qq{obviously,} \hat g_T = \hat k
+\]
+
+\paragraph{With rotation}
+
+Consider the action (in 3D)
+\[
+  \hat R_{(\bm e_a, \epsilon)} \ket|\bm r> = \ket|?>
+\]
+Firstly, $\delta\bm r = \epsilon \bm e_a \times \bm r$, then,
+\[
+  \hat R_{(\bm e_a, \epsilon)} \ket|\bm r>
+= \ket|\bm r + \epsilon \hat e_a \times \bm r>
+\]
+So, we have
+\[
+  \hat R_{(\bm e_a,\epsilon)} \hat{\bm r} \hat R_{(\bm e_a,\epsilon)}^{-1}
+= \hat{\bm r} + \epsilon \bm e_a \times \hat{\bm r}
+\]
+The generator
+$\hat R_{(\bm e_a,\epsilon)} = \identity - \iu\epsilon \hat g_{\bm a}$,
+we can simply replace $\epsilon$ with the whole term
+\[
+  [\hat{\bm r}, \hat g_{\bm e_a}] = \iu\bm e_a \times \hat{\bm r}
+\]
+The key difference is that the equation is the vector equation, for the scalar,
+\[
+  [\hat x, \hat g_{\bm e_a}] = \iu(\bm e_a \times \hat{\bm r})_x
+\]
+To expand it,
+\[
+  [\hat x, \hat g_{\bm e_a}] = \iu [(e_a)_y\hat z - (e_a)_z \hat y]
+\]
+Similarly, for $\hat y$ and $\hat z$, the single equation corresponds to 3
+sub-equations in total.
+Eventually, we will find
+\[
+  \hat g_{\bm e_a} = \bm e_a \cdot(\hat{\bm r \times \hat{\bm k}})
+= \bm e_a \cdot \hat{\bm L}
+\]
+where $\hat{\bm L} \equiv \hat{\bm r} \times \hat{\bm k}$.
+If the rotation is actually the symmetry, then, the projection $\bm e_a$ can be
+removed.
+
+If $a$ is no more infinitesimal, i.e.,
+to the exponential $U(t) = \upe^{-\iu\hat Ht}$,
+we can divide $a$ into $n$-steps, then take the multiplication into power $N$ of
+small steps of translations
+\[
+  \hat T_a = \identity - \iu\epsilon \hat g_T \Rightarrow
+  \hat T_a = (\hat T_{a/N}) \xlongequal{N\to\infty}
+  \ab(1- \iu\frac aN \hat g_T)^N = \upe^{-\iu a\cancelto{k}{\hat g_T}}
+\]
+Similarly for the rotation, we have
+\[
+  \hat R_{(\bm e_a,\epsilon)} = \identity - \iu\epsilon \hat g_{\bm a}
+  \Rightarrow
+  \hat R_{(\bm e_a,\epsilon)} = \upe^{-\iu\theta \bm e_a \cdot \hat{\bm L}}
+= \upe^{-\iu \bm\theta \cdot \hat{\bm L}}
+\]
+Usually, we say $\bm e_a$ is fixed, then we have only one parameter $\theta$.
+Now, we can rewrite this trivially
+\[
+  \hat R_{\bm\theta} = \upe^{-\iu\bm\theta\hat{\bm L}}
+\]
+It means we have 3 free parameters, which allows us to do the exponential
+mapping.
+Functions themselves make the Hilbert space: $\{f(\bm r)\}$
+\[
+  f(\bm r) = (\hat Rf)(\bm r)
+\]
+
+\subsection{Conservation Laws}
+
+\section{Symmetry group representations, degeneracies, inversion and time reversal}
+
+\section{Angular momentum, Lie algebra}
+
+\section{Gauge}

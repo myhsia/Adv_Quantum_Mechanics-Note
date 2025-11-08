@@ -1,0 +1,126 @@
+% !TeX root = ../main.tex
+
+\section*{Math Quiz}
+
+\begin{problem}
+  Compute
+  \[
+    \int_{-\infty}^{+\infty} \upe^{-\frac12x^2+ax} \d x \quad (a \in \mathbbm R)
+  \]
+\end{problem}
+\begin{solution}
+  Handle the exponential term first
+  \[
+    -\frac12 x^2 + ax = -\frac12 (x - a)^2 + \frac12 a^2
+    \xlongequal{u=x-a} -\frac12 u^2 + \frac12 a^2
+  \]
+  then the integral is
+  \begin{align*}
+    \int_{-\infty}^{+\infty} \upe^{-\frac12 u^2 + \frac12 a^2} \d u
+  = \upe^{\frac12 a^2} \int_{-\infty}^{+\infty} \upe^{-\frac12 u^2} \d u
+  = \upe^{\frac12 a^2} \cdot 2\Gamma\ab(\frac12)
+  = \sqrt{2\pi} \upe^{\frac{a^2}{2}}
+  \end{align*}
+\end{solution}
+
+\begin{problem}
+  Compute
+  \[
+    \int_{-\infty}^{+\infty} \frac{\upe^{\iu kx}}{k^2+a^2} \d k \quad (a > 0)
+  \]
+\end{problem}
+\begin{solution}
+  The two singularities are: $k = \pm \iu a$.
+  The integrand function can be written as
+  \[
+    f(k) = \frac{\upe^{\iu kx}}{k^2 + a^2} = \frac{P(k)}{Q(k)}
+  \]
+  while $Q(\pm \iu a) = 0$, but $Q'(\pm \iu a) = \pm 2\iu a \neq 0$,
+  so the residues of $f(k)$ are
+  \[
+    \Res(f,\iu a) = \frac{P(\iu a)}{Q'(\iu a)} = \frac{\upe^{-ax}}{2\iu a},~
+    \Res(f,-\iu a) = \frac{P(-\iu a)}{Q'(-\iu a)} = -\frac{\upe^{ax}}{2\iu a},~
+  \]
+  According to the \emph{Residue Theorem}, the result of the integration is
+  \[
+    I = 2\pi \iu[\Res(f,\iu a) + \Res(f,-\iu a)] = \frac \pi a (\upe^{-ax} - \upe^{ax})
+  \]
+\end{solution}
+
+\begin{problem}
+  Solve
+  \[
+    \odv*{f(x)}x + (x - a) f(x) = 0
+  \]
+\end{problem}
+\begin{solution}
+  Separate the variables
+  \[
+    \frac{\d f(x)}{f(x)} = -(x - a) \d x
+  \]
+  integrating both sides
+  \[
+    \ln[f(x)] = -\frac12 (x - a)^2 + C'
+  \]
+  then we get the solution
+  \[
+    f(x) = \upe^{-\frac12(x - a)^2 + C'} = C\upe^{-\frac12(x - a)^2}
+  \]
+  where $C$ is any constant.
+\end{solution}
+
+\begin{problem}
+  Find the eigenvalues and the eigenvectors of the following matrix
+  \[
+    \mathbf M =
+    \begin{pmatrix}
+      0 & a\\
+      b & 0
+    \end{pmatrix}
+  \]
+\end{problem}
+\begin{solution}
+  Let
+  \[
+    \det(\mathbf M - \lambda\mathbf I) =
+    \begin{vmatrix}
+      -\lambda & a\\
+      b & -\lambda
+    \end{vmatrix} = \lambda^2 - ab = 0
+  \]
+  Then we get the eigenvalues of matrix $\mathbf M$: $\lambda_1 = \sqrt{ab}$
+  while $\lambda_2 = -\sqrt{ab}$.
+  Next, calculating the eigenvectors.
+  \[
+    \begin{pmatrix}
+      0 & a\\
+      b & 0
+    \end{pmatrix}
+    \bm e_{1,2} = \pm \sqrt{ab} \bm e_{1,2}
+  \]
+  then we arrive at
+  \[y = \sqrt{\sfrac ba} x\]
+  So, the two eigenvectors can be
+  \[
+    \bm e_1 = \ab(1,\sqrt{\sfrac ba})\tran,~
+    \bm e_2 = \ab(1,-\sqrt{\sfrac ba})\tran
+  \]
+  \begin{remark}
+    If $b = 0$ and $a$ is finite (or the other way around),
+    then there's only one eigenvector.
+  \end{remark}
+\end{solution}
+
+\begin{problem}
+  How many configurations are there to put $n$ indistinguishable balls into $m$ distinguishable boxes?
+\end{problem}
+\begin{solution}
+
+\end{solution}
+
+\begin{problem}
+  Write down one example of abelian groups and one example of non-abelian groups, respectively.
+\end{problem}
+\begin{solution}
+
+\end{solution}
