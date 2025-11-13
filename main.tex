@@ -1,7 +1,9 @@
 % Mingyu Xia (夏明宇, Westlake ID: 20251202247) Homework #i & #j
 \documentclass[11pt]{whatsnote}
 
-\usepackage[cache = false]{minted}
+\usepackage[compat = 1.1.0]{tikz-feynhand}
+\setlength \feynhandblobsize {10mm}
+\usepackage{minted}
 \usepackage{float}
 \usepackage[natbib, style = phys, biblabel = brackets, sorting = none]{biblatex}
 \addbibresource{reference-phx.bib}
@@ -27,11 +29,11 @@
 \mainmatter
 
 \addtocounter{chapter}{-1}
-\input{chapter/0_Preparation.tex}
-\input{chapter/quiz1.tex}
-\input{chapter/1_.tex}
-\input{chapter/2_.tex}
-\input{chapter/3_.tex}
+\include{./chapter/0_Preparation.tex}
+\include{./chapter/quiz1.tex}
+\include{./chapter/1_.tex}
+\include{./chapter/2_.tex}
+\include{./chapter/3_.tex}
 
 \newcommand \sectionname {Lecture \#}
 \appendix
@@ -42,8 +44,8 @@
 \addcontentsline{toc}{chapter}{Problem Set}
 \renewcommand *\thesection{\sectionname \arabic{section}}
 \newweek
-\input{homework/hw0.tex}
+\include{./chapter/hw0.tex}
 \newweek
-\input{homework/hw1.tex}
+\include{./chapter/hw1.tex}
 
 \end{document}
