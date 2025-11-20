@@ -804,6 +804,299 @@ The basis vector is the eigenvector of both $\hat A$ and $\hat B$
 \section{Symmetry group representations, degeneracies,
          inversion and time reversal}
 
+\subsection{Group representations}
+
+Starting from
+\[
+  \hat\Omega_\theta \ket|\bm r> = \ket|h_\theta(\bm r)>
+\]
+\begin{example}\leavevmode
+  \begin{enumext}
+    \item Translation $h_{\bm a} (\bm r) = \bm r + \bm r$
+    \item Reflection $h_{\bm e}(\bm r) = \bm r - 2\bm r_\parallel$ (Figure required).
+    \item Rotation $h_{\bm\theta = (\bm e_a, \theta)}(\bm r)
+    = \bm r_\parallel + \cos\theta\bm r_\bot + \sin\theta(\bm e_a \times \bm r_\bot)$.
+  \end{enumext}
+  For an arbitary state $\ket|\psi>$, how the operator act on the arbitary state
+  \[
+    (\hat\Omega_\theta\psi)(\bm r)
+  = \braket<\bm r|\hat\Omega_\theta|\psi>
+  = \braket<h_\theta^{-1}(\bm r)|\psi> = \psi(h_\theta^{-1}(\bm r))
+  \]
+  Then, consider a general
+  \[
+    (\hat\Omega_2\hat\Omega_1\psi)(\bm r)
+  = \braket<\bm r|\hat\Omega_2\hat\Omega_1|\psi>
+  = \braket<h_2^{-1}(\bm r)|\Omega_1\psi>
+  = \braket<(h^{-1}h_2^{-1})(\bm r)> \ket|\psi>
+  \]
+  where we can treat $\hat\Omega_2\hat\Omega_1 = \hat\Omega_3$.
+  The transformation converses the distance $\bm r_1 - \bm r_2$,
+  then, all the $h$
+  \[
+    h(\bm r_1 - \bm r_1) = |h(\bm r_1) - h(\bm r_1)| = |\bm r_1 - \bm r_2|
+  \]
+  form the Euclidian space (Group)
+  \begin{equation}
+    E(d):\ \{h||h(\bm r_1 - \bm r_2) = |\bm r_1 - \bm r_2|\}
+  \end{equation}
+  \begin{enumext}
+    \item All the translation form $T(d)$
+    \item All the reflection form $O \in \text{reflection place}$
+    \item All the rotationform $O(d)$, orthogonal group.
+  \end{enumext}
+  But, in Euclidian space, it will become a semi-direct product
+  \[
+    T_d \rtimes O(d)
+  \]
+  where $O(d) = \text{SO}(d) \times \mathbb Z_2$ is orthogonal.
+  For $\{M_d:\ M^\dagger M = \identity\}$, then $(\det(M))^2 = 1$,
+  $\det(M) = \pm 1$. This means that $S$ can be special for $\det(M) = +1$.
+  While $Z_2$ have two $\{+1, -1\}$.
+\end{example}
+
+We have a Euclidian group
+$\{\hat\Omega_\theta\} \leftarrow G = E(d) \to \{h_\theta\}$ corresponding to
+all the operators.
+\begin{equation}
+  \overset{\mathbb V = \{\ket|\bm r>\}}
+    {\underset{(G\circlearrowright\mathbb V)}{\{\hat\Omega_\theta\}}}
+  \xlongleftarrow[\substack{
+    \Omega_1\mapsfrom g_1,\ \Omega_2\mapsfrom g_2\\
+    \Omega_1\Omega_2 \mapsfrom g_1 \cdot g_2
+  }]{\text{homomorphism}}
+  \underset{\substack{\rotatebox{90}{$=$}\\E(d)}}{G}
+  \xlongrightarrow{\text{homo}}
+  \overset{\mathbb R = \{\bm r\}}
+    {\underset{(G\circlearrowright\mathbb R^d)}{\{\hat h_\theta\}}}, \quad
+  G \longrightarrow GL(V), \quad \Omega: V \to V
+\end{equation}
+where ``homomorphism'' means the same shape and form,
+$h_\theta$ acts on $\bm r$ while $\hat\Omega_\theta$ acts on $\ket|\bm r>$.
+They form \emph{Group Action}: Representation.
+
+\paragraph{Translation group}
+
+We start from the translation group $T(d)$. Consider
+\[
+  T_{\bm a} \cdot T_{\bm b} = T_{\bm a + \bm b = \bm b + \bm a}
+\]
+we call it the \emph{Abelian Group}.
+In Hilbert space of this case, $V = \operatorname{span}(\{\ket|\bm r>\})$.
+Then, the operator $\hat T_{\bm a}$ on this space
+\[
+  \hat T_{\bm a} = \upe^{-\iu\bm a\cdot\hat{\bm k}}
+\]
+where $\hat g_{T_i} = \hat k_i$ for $i = 1$, $2$, $3$.
+\paragraph{Quiz}
+Now, consider
+\[
+  T_{\bm a} \xlongequal{k\to\iu\nabla} \upe^{-\bm a \cdot\nabla}
+\]
+Calculate
+\[
+  \braket<\bm r|\hat T_a|\psi> = (T_{\bm a}\psi)(\bm r)
+= \psi(\bm r - \bm a).
+\]
+By Foruier transform , where one can have the eigenvalue Equation
+\[
+  \nabla \upe^{\iu\bm k\cdot\bm r} = -\iu \bm k \upe
+\]
+and in Foruier transform
+\[
+  \psi(\bm r) = \int \d\bm k \tilde\psi(\bm k) \upe^{\iu\bm k\cdot\bm r}
+\]
+we can have
+\[
+  f(\nabla) \upe^{\iu \bm k\cdot\bm r} = f(\iu\bm k) \upe^{\iu\bm k\cdot\bm r},
+  \quad
+  \upe^{-\bm a\cdot\nabla} \upe^{\iu\bm k\cdot\bm r}
+= \upe^{\iu\bm k\cdot(\bm r-\bm a)}
+\]
+Due to the property of the transform operator
+\[
+  \upe^{-\bm a\cdot\nabla} \psi(\bm r) = \psi(\bm r - \bm a)
+\]
+substitute the identities above
+\[
+  \upe^{-\bm a\cdot\nabla} \psi(\bm r)
+= \int \d\bm k \tilde\psi(\bm k) \upe^{\iu\bm k(\bm r-\bm a)}
+= \psi(\bm r - \bm a)
+\]
+\rule{\linewidth}{1pt}
+For Abelian group, we have the commutative generator
+\[
+  [\hat k_i, \hat k_j] = 0
+\]
+\begin{enumext}
+  \item $V = \{\ket|\bm k, \sigma>|\hat{\bm k} \ket|\bm k,
+    \sigma> = \bm k\ket|\bm k, \sigma>, \bm k \in \mathbb R^3\}$.
+  Now, the Hilbert space becomes a direct sum
+  \[
+    V = \bigoplus_{\bm k\in\mathbb R^3} V_{\bm k}, \qq{where}
+    V_{\bm k_0} = \operatorname{span}(\{\ket|\bm k_\sigma, \sigma>\})
+  \]
+  \item $[\hat H, \hat{\bm k}] = 0$, $\forall \bm a$. The Hamiltonian operator
+  also becomes
+  \[
+    \hat H = \bigoplus_{\bm k\in\mathbb R^3} \hat H_{\bm k}
+  = \pdiagmat[empty = {}]{H_{\bm k_1}, H_{\bm k_2}, \ddots}
+  \]
+  where
+  \[
+    \hat H_{\bm k} = P_{\bm k} \hat H P_{\bm k}, \qq{and}
+    P_{\bm k} = \sum_\sigma \ketbra|\bm k,\sigma><\bm k, \sigma|
+  \]
+  Then, $V_{\bm k} = P_{\bm k}V$, the so-called \emph{Bloch Theorem}\footnote{%
+    In the lattice, we need to change $\bm a \in \mathbb R^3 \to \mathbb Z^3$}.
+\end{enumext}
+
+\paragraph{Non-abelian Group}
+
+\begin{example}
+  $\text{SO}(d)$ for $d > 2$
+\end{example}
+\begin{example}[Dihedred Group for $n$-gon]
+  The elements
+  \[
+    \{e,\ R,\ R^2, \rho_0, \rho_1,\ \rho_2\} = \bra<R,\rho = \rho_0|
+    \qq{(generators)}
+  \]
+  where
+  \begin{enumext}[columns = 2]
+    \item $R^2 = \bar R$
+    \item $\rho_i = \bar\rho_i$
+    \item $R^3 = e = \rho_i$
+    \item $R\rho_i\bar R = \rho_{i+1}$
+    \item $\rho R \bar\rho_0 = \bar R$
+  \end{enumext}
+  In summary
+  \begin{enumext}[columns = 2]
+    \item $R\rho_0\bar R = \rho_{R(0)}$
+    \item $\rho_0 R\bar\rho_0 = R_\text{flip} = \bar R$
+    \item $\rho_i\rho_{i+1} = R$
+    \item $\rho_{i+1}\rho_i = \bar R$
+  \end{enumext}
+  From $\rho_a\rho_b = T_{2(a+b)}$, we have
+  \[
+    \rho_i \rho_{i\pm 1} = T_{\mp2} = T_{\pm 1} = R^2
+  \]
+  and from $\rho_a\rho_b\rho_c = \rho_{a-b+c}$, we have
+  \[
+    \rho_0\rho_1\bar\rho_0 = \rho_{0-1+0} = \rho_{-1} = \rho_2
+  \]
+  \[
+    R\rho_0 = \rho_2 \rho_0 \rho_0 = \rho_2, \quad
+    R^2 \rho_0 = \rho_1
+  \]
+\end{example}
+Cayley Table (Group Multiplication Table)
+\[
+  \{e,\ R,\ R^2, \rho_0, \rho_1,\ \rho_2\} = \braket<\underbrace{R,\rho = \rho_0}_\text{generators}|
+  \underbrace{R^3 = \rho^2 = e, \rho R = R^2\rho}_\text{relations}>
+\]
+where $R^{n_1}$, $\rho^{m_1}$, $R^{n_2}$, $\rho_{m_2}$
+will appear in the group. We can always switch $R$ and $\rho$ since
+\[
+  \rho R = R^2 \rho
+\]
+Similar for $D_n$.
+
+Now, we can define two operators
+\[
+  \hat R\ket|i> = \ket|R(i)> = \ket|i + 1>, \qq{and}
+  \hat\rho\ket|i> = \ket|\rho(i)> = \ket|-i>
+\]
+on Hilbert space $V = \operatorname{span}(\{\ket|0>, \ket|1>, \ket|2>\})$.
+The Hamiltonian
+\[
+  \hat H = \sum_{i,j = 0,1,2} \ketbra|i> h_{ij} <j|
+\]
+where $h_{ij} = h_{ji}^*$. So,
+\[
+  \forall \hat g \in D_3,\ [\hat H, \hat g] = 0 \Rightarrow ?
+\]
+Since $\hat R\hat H\hat R^{-1} = \sum_{ij} \ketbra|i+1>h_{ij}<j+1| = \hat H$, then
+\[
+  h_{ij} = h_{i+1,j+1}, \quad
+  h_{ij} = h_{-i, -j}
+\]
+we have
+\[
+  \hat H = \begin{pmatrix}
+    \epsilon & t & t\\ t& \epsilon & t\\t & t' & \epsilon
+  \end{pmatrix} =
+  \begin{pmatrix}
+    0 & t  & t\\
+    t & 0  & t\\
+    t & t' & 0
+  \end{pmatrix}
+\]
+The eigenvalue and eigenvector, the basis are $\ket|0>$, $\ket|1>$, $\ket|2>$.
+\[
+  \hat H = t(\hat R + \hat R^2)
+\]
+we know $\hat R^3 = 1$, then the eigenvalue should be
+$\lambda_n = \upe^{\iu\frac{2\pi}3}$
+\[
+  \hat R\ket|\psi_n> = \upe^{\iu\frac{2\pi}{3}n} \ket|\psi_n>, \quad
+  n = 0,\ 1,\ 2
+\]
+Then eigenvalues are
+\[
+  E_{\psi_0} = 2t, \quad E_{\psi_1} = E_{\psi_2} = t(\omega + \omega^*)
+\]
+we arrive at the degeneracy.
+Now, write the operators $\hat R$ and $\hat \rho$ into the basis
+\[
+  \{\ket|\psi_0>,\ \ket|\psi_1>,\ \ket|\psi_2>\}
+\]
+$R_\psi$ in the $\psi$ basis, it is diagonal
+\[
+  R_\psi = \pdiagmat{1, \omega, \bar\omega}
+\]
+Calculate how $\hat R(\hat\rho\ket|\psi_0>)$ acts.
+\[
+  \hat R(\hat\rho\ket|\psi_0>) = \hat\rho \hat R^2 \ket|\psi_0>
+\xlongequal{\hat R\ket|\psi_0> = \ket|\psi_0>} \hat\rho\ket|\psi_0>
+\]
+So, $\braket<\psi_i|\hat\rho|\psi_0> = \delta_{i,0}$.
+For $\ket|\psi_1>$,
+\[
+  \hat R(\hat\rho\ket|\psi_1>) = \hat\rho \hat R^2 \ket|\psi_1>
+= \bar\omega \hat\rho \ket|\psi_1>
+\]
+So, in matrix
+\[
+  R_\psi = \begin{pmatrix}
+    1 & & 0\\
+    & \omega\\
+    0 & & \bar\omega
+  \end{pmatrix}, \quad
+  \rho_\psi = \begin{pmatrix}
+    1 & 0\\
+    0 & & 1\\
+    & 1
+  \end{pmatrix}
+\]
+In the new basis, the Hilbert space
+\[
+  V = V_{\psi_0} \oplus V_{\{\psi_1, \psi_2\}}, \quad
+  g = g_{\psi_0} \oplus g_{\{\psi_1,\psi_2\}}
+\]
+and
+\[
+  0 = \braket<\psi_1|\hat\rho|\psi_1>
+\]
+This is why the degeneracy occurs.
+\[
+  \hat H\ket|\psi> = E\ket|\psi>, \quad
+  \hat H(\hat\rho\ket|\psi>) = \hat\rho \hat H\ket|\psi>
+= E(\hat\rho\ket|\psi>).
+\]
+
+\subsection{Degeneracies}
+
 \section{Angular momentum, Lie algebra}
 
 \section{Gauge}
