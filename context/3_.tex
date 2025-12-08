@@ -1047,6 +1047,9 @@ Then eigenvalues are
   E_{\psi_0} = 2t, \quad E_{\psi_1} = E_{\psi_2} = t(\omega + \omega^*)
 \]
 we arrive at the degeneracy.
+
+\subsection{Degeneracies}
+
 Now, write the operators $\hat R$ and $\hat \rho$ into the basis
 \[
   \{\ket|\psi_0>,\ \ket|\psi_1>,\ \ket|\psi_2>\}
@@ -1353,9 +1356,313 @@ Rearrange it
 \]
 If $|a|^2 = |b|^2$, $\upe^{\iu\theta} = 1$.
 
+\subsection{Propective Representation}
 
-\subsection{Degeneracies}
+The unitary operator $\hat I$ and anti-unitary operator $\hat T$.
+The homomorphism $\rho:\ G \to GL(V)$.
+\[
+  \forall g, h \in G, \rho(g) \rho(h) \sim \rho(gh)
+\]
+In quantum mechanics, we are allowed to have a global phase
+\[
+  \rho(gh) = \upe^{\iu\theta(gh)} \rho(g) \rho(h)
+\]
+This phase factor is basically the constraints of $\theta$ by consistency
+\[
+  \rho(ghk) = \begin{cases}
+    \upe^{\iu\theta(g,hk)} \rho(g) \rho(hk)
+  = \upe^{\iu(\theta(g,hk) + \theta(h,k))} \rho(g) \rho(h) \rho(k)\\
+    \upe^{\iu\theta(gh, k)} \rho(g,h) \rho(k)
+  = \upe^{\iu(\theta(gh,k) + \theta(g,h))} \rho(g) \rho(h) \rho(k)\\
+  \end{cases}
+\]
+The two factors should the same, then
+\[
+  \theta(g,hk) + \theta(h,k) \cong \theta(gh,k) + \theta(g,h)
+\]
+which is the so-called cocycle condition.
+\begin{enumext}
+  \item If $\theta = 0$, we arrive at the linear representations.
+  \item Suppose for any $\theta$, $g$, and $h$
+  \[
+    \delta \theta_\phi(g,h) = \phi(g) + \phi(h) - \phi(gh)
+  \]
+  Then, the cocycle condition becomes
+  \[
+    \phi(g) \cancel{+ \phi(hk)} - \phi(ghk) + \phi(h) + \phi(k)
+    \cancel{-\phi(hk)}
+  \]
+  is automatically satisfied. Given $\forall g$, $h \in G$
+  \[
+    \tilde\theta(g,h) = \theta(g,h) + \delta \theta_\phi(g,h)
+  \]
+  where the cocycle condition always satisfied. So
+  \[
+    \tilde \theta \sim \theta
+  \]
+  The equivalence is eventually related to topology.
+\end{enumext}
+Consider 4 $\theta$s for the group $\mathbb Z_2 = \{e, g\}$, where $g^2 = e$,
+and $g$ can be time-invariant $\hat I$ or space-invariant $\hat T$
+\[
+  \theta(e,e) = \theta(e,g) = \theta(g,e) = 0,\quad
+  -\theta := \theta(g,g), \quad
+  \hat g^2 = \upe^{\iu\theta} \identity.
+\]
+$\rho(e) = \identity$ is always true, the three ones are numbers, while the last
+one is a function. For arbitary state $\ket|\psi>$
+\[
+  \hat g \ket|\psi> = \ket|\chi>, \quad
+  \hat g \ket|\chi> = \hat g^2 \ket|\psi> = \upe^{\iu\theta} \ket|\psi>
+\]
+\begin{enumext}
+  \item $\hat g$ is unitary
+  \[
+    \hat g(\ket|\psi> \pm \upe^{-\iu\theta/2} \ket|\chi>)
+  = \ket|\chi> \pm \upe^{+\iu\theta/2} \ket|\psi>
+  = \pm \upe^{\iu\theta/2} (\ket|\psi> \pm \upe^{-\iu\theta/2} \ket|\chi>)
+  \]
+  we obtain the eigenvectors of $\hat g$:
+  $\ket|\psi> \pm \upe^{-\iu\theta/2} \ket|\chi>$, 1D irreducible
+  representation, all equivalent.
+
+  The phase factor can be absorbed into $\hat g$.
+  \item $\hat g$ is anti-unitary: using the same trick.
+  \[
+    \hat g(a\ket|\psi> + b\ket|\chi>) = a^*\ket|\psi>
+  + b^*\upe^{\iu\theta} \ket|\psi>
+  \]
+  Note: For anti-unitary operator, when the scalor $a$ and $b$ pass through it,
+  it should take the conjugate. Where the factors should satisfy
+  (we obtained before)
+  \[
+    \frac a{b^*\upe^{\iu\theta}} = \frac b{a^*} \Rightarrow
+    |a|^2 = |b|^2\upe^{\iu\theta}
+  \]
+  \begin{enumext}
+    \item $\hat T^2 = \upe^{\iu\theta} = +1$: eigenvector becomes 1D irreducible
+    representation.
+    \item $\hat T^2 = \upe^{\iu\theta} \neq +1$, then no eigenvector possible, it has to be
+    2D irreducible representation basically in the space of
+    $\{\ket|\psi>, \ket|\chi>\}$.
+  \begin{remark}[Constraint on $\upe^{\iu\theta}$]
+    \[
+      \hat g^3 \ket|\psi> =
+      \begin{cases}
+        \hat g^2 (\hat g(\ket|\psi>)) = \upe^{\iu\theta} (\hat g\ket|\psi>)\\
+        \hat g (\hat g^2 \ket|\psi>) = \upe^{-\iu\theta} (\hat g\ket|\psi>)
+      \end{cases} \Rightarrow \upe^{\iu\theta} = \pm 1
+    \]
+    This ``magic'' happens due to the fact that \emph{$\hat g$ is anti-unitary}.
+    So, the second point (ii) becomes
+  \end{remark}
+  \item $\hat T^2 = \upe^{\iu\theta} = -1$, then no eigenvector possible, it has
+  to be 2D irreducible representation basically in the space of
+  $\{\ket|\psi>, \ket|\chi>\}$.
+  \end{enumext}
+\end{enumext}
+Put these into context, for the time-inversal operator,
+$\hat T^2 = \pm \identity$.
+\begin{enumext}
+  \item Consequence of $\hat T^2 = -1$
+  \[
+    O = \braket<\psi|\hat T\psi> = \braket<\psi|\chi>
+  = \braket<\chi|\psi>^* = \braket<\hat T\chi|\hat T\psi>
+  \xlongequal{\hat T^2\psi = -\psi, \hat T\psi = \chi} -\braket<\psi|\chi>
+  \]
+  This is the so-called Kramers pair.
+  \item Time-Reversal \underline{Symmetry}
+  \[
+    [\hat T, \hat H] = 0
+  \]
+  \begin{enumext}
+    \item $\hat T^2 = +1$
+    In the basis of $\{\ket|\alpha>, \hat T\ket|\alpha> = \ket|\alpha>\}$
+    \[
+      \hat T\ket|\alpha> = \upe^{\iu\phi(\alpha)} \ket|\alpha>, \quad
+      \ket|\tilde\alpha> = \upe^{\iu\phi_\alpha/2} \ket|\alpha>,\quad
+      \hat T\ket|\tilde\alpha> = \upe^{-\iu\phi_\alpha/2}
+      \upe^{\iu\phi_\alpha} \ket|\alpha>
+    \]
+    means $\ket|\tilde\alpha>$ all matrix elements of $\hat H$ are real.
+    \[
+      \hat T = K \qq{complex comjugation} \Rightarrow
+      H_{\alpha\alpha}^* = H_{\alpha\alpha}
+    \]
+    From $[\hat T, \hat H] = 0$, we can obtain
+    $\hat H = \hat T\hat H\hat T^{-1}$.
+    \item $\hat T^2 = -1 \to $ 2D irreducible representation $\to$ basis
+    \[
+      \{(\ket|\alpha_n>, \ket|\beta_n>),
+      \hat T\ket|\alpha_n> = \ket|\beta_n>,
+      \hat T\ket|\beta_n> = -\ket|\alpha_n>\}
+    \]
+    satisfies block diagonal $\hat T$
+    \[
+      \hat T = \theta_n \begin{pmatrix}
+        & -1\\1
+      \end{pmatrix} K = (-\iu\sigma_y) K
+    \]
+  \end{enumext}
+\end{enumext}
+\paragraph{Quiz2}
+Starting with $\hat T\hat H \hat T^{-1} = \hat H$ (or $[\hat T, \hat H] = 0$).
+In the Hilbert space $V = \oplus_n V_n$,
+where $V_n = \operatorname{span} (\{\ket|\alpha_n>, \ket|\beta_n>\})$.
+
+Substitute $\hat T$
+\[
+  \begin{pmatrix}
+    & -1\\1 &
+  \end{pmatrix} H_{nn'}^* = H_{nn'} \begin{pmatrix}
+    & -1\\1
+  \end{pmatrix}
+\]
+where the equation of $H_{nn'}$ satisfies
+\begin{CJK*}{UTF8}{bsmi}
+\[
+\begin{pmatrix}
+  -\text{丙} & -\text{丁}\\
+  \text{甲} & \text{乙}
+  \end{pmatrix} = 
+  \begin{pmatrix}
+    & -1\\1
+  \end{pmatrix}
+  \begin{pmatrix}
+    \text{甲}^* & \text{乙}^*\\
+    \text{丙}^* & \text{丁}^*\\
+  \end{pmatrix} =
+  \begin{pmatrix}
+    \text{甲} & \text{乙}\\
+    \text{丙} & \text{丁}\\
+  \end{pmatrix}
+  \begin{pmatrix}
+    & -1\\1
+  \end{pmatrix} =
+  \begin{pmatrix}
+    \text{乙} & -\text{甲}\\
+    \text{丁} & -\text{丙}
+  \end{pmatrix}
+\]
+Then, we have
+\[
+  \begin{cases}
+    \text{甲} = \text{丁}^*,\\
+    \text{乙} = -\text{丙}^*
+  \end{cases}, \quad
+  \text{甲} = a + \iu d, \quad
+  \text{乙} = c + \iu b.
+\]
+Then, we can express $H_{nn'}$ as
+\[
+  H_{nn'} =
+  \begin{pmatrix}
+    \text{甲} & \text{乙}\\
+    -\text{乙}^* & \text{甲}
+  \end{pmatrix} = a\sigma_0 + d(\iu\sigma_z) + b(\iu\sigma_x) + c(\iu\sigma_y)
+\]
+which means $H_{nn'}$ is quaternion.
+\end{CJK*}
+In the second sequence,
+\[
+  \hat H\ket|\psi> = E\ket|\psi>, \quad
+  \hat H(\hat T\ket|\psi>) = \hat T\hat H\ket|\psi>
+= E(\hat T\ket|\psi>).
+\]
+So-called Kramers-Dageneracy.
+
+\paragraph{Experiment}
+Given $\hat T^2 = -1$, means do it twice, and there will two twists on the
+world-line (ribbon); for $(\hat T^2)^2 = +1$, turn the ribbon for 4 times, then
+let one point pass through under the other part of the ribbon, it restores to
+the original plain one.
 
 \section{Angular momentum, Lie algebra}
+
+\subsection{SO(3) / SU(2) groups}
+
+The SO(3) group is rotations in 3D, SU(2) group: innerspace.
+\begin{definition}[Rotations in 3D]
+  For $v \in \mathbb R$,
+  \[
+    (Rv)\tran (Rv) = v\tran v, \Rightarrow R\tran R = \identity_3, \quad
+    \det R = +1, \quad (\det R)^2 = 1
+  \]
+  means the group can be defined as
+  \[
+    \text{SO(3)} = \{R:\ R\tran R = \identity_3,\ \det R = +1\}
+  \]
+  One can also consider the operator $R = \upe^A$, where $A\tran = -A$
+  \[
+    A = \begin{pmatrix}
+      0 & \theta_3 & -\theta_2\\
+      -\theta_3 & 0 & \theta_1\\
+      \theta_2 & -\theta_1 & 0
+    \end{pmatrix} = \sum_{a = 1,2,3} \theta_a(ij_a)
+  \]
+  where $(j_a)_{bc} = (-\iu)\epsilon_{abc}$,
+  $ij_a = \pdv{R(\bm\theta)}{\theta_a}\bigg|_{\bm\theta = 0}$.
+  \[
+    ij_1 = \begin{pmatrix}
+      0 & \\&
+      & 1\\ & -1
+    \end{pmatrix},\quad
+    ij_2 = \begin{pmatrix}
+      & & -1\\
+      & 0\\1
+    \end{pmatrix},\quad
+    ij_3 = \begin{pmatrix}
+      & 1\\
+      -1\\
+      & & 0
+    \end{pmatrix}
+  \]
+\end{definition}
+\begin{definition}
+  \[
+    \text{SU(2)} = \{U, (Uv)^\dagger (Uv) = v^\dagger v,\
+    U^\dagger U = \identity_2,\ \det U = +1\}
+  \]
+  where $v \in \mathbb C^2$. For
+  \[
+    U = \upe^{\iu H},\quad H^\dagger = H, \quad
+    H = \sum_a \theta_a \frac{\sigma_a}{2}.
+  \]
+  Substitute $H$ into $U$
+  \[
+    U(\bm\theta) = \upe^{\iu\sum_a \theta_a \frac{\sigma_a}{2}}
+  \]
+  $\sigma$ here are Pauli matrices.
+  \paragraph{Quiz}
+  \begin{enumext}[columns = 3]
+    \item $[j_1, j_2] = ij_3$
+    \item $[\frac{\sigma_1}{2}, \frac{\sigma_2}{2}] = \iu\frac{\sigma_3}{2}$
+    \item $[\hat L_1, \hat L_2] = \iu\hat L_3$
+    \item $[j_a, j_b] = \iu\epsilon_{abc} j_c$
+    \item $[\frac{\sigma_a}{2}, \frac{\sigma_b}{2}] = \iu\epsilon_{abc} \frac{\sigma_c}{2}$
+    \item $[\hat L_a, \hat L_b] = \iu\epsilon_{abc} \hat L_c$.
+  \end{enumext}
+\end{definition}
+
+\subsection{Lie algebra}
+
+Algebra is vector space, we define vector product
+\[
+  \qq{bilinear:} V \times V \to V, \quad
+  V = \operatorname{span}(\{g_a\})
+\]
+A generator is something similarly to
+\[
+  g_a = \pdv{U(\bm \theta)}{\theta_a} \bigg|_{\bm\theta = 0}
+\]
+Lie bracket $[\cdots]$
+\[
+  \qq{Antisymmetric} [u, v] = -[v, u]
+\]
+and Jacobi identity
+\[
+  [u,[v,w]] + [v,[w,u]] + [w,[u,v]] = 0
+\]
+
 
 \section{Gauge}
