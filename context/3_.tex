@@ -1664,5 +1664,310 @@ and Jacobi identity
   [u,[v,w]] + [v,[w,u]] + [w,[u,v]] = 0
 \]
 
+\section{Theory of Angular Momentum (Theory of Irreps of SO(3) Lie Algebra)}
+
+The Lie bracket
+\[
+  [\quad, \quad]: (a,b) \mapsto [a,b]
+\]
+It satisfy two properties
+\begin{enumext}
+  \item Anti-symmetry: $[a,b] = -[b,a]$, which concerns the ``commutativity''.
+  \item Jacobi's identity: $[a, [b,c]] + (bca) + (cab) = 0$, which concerns
+  the ``associativity''.
+\end{enumext}
+Lie Algebra $(V,[,])$ contains: The tangent space of the Lie group,
+and its product.
+\[
+  V = \operatorname{span} (\{g_a\}), \quad
+  g_a = \iu \pdv{\Omega_q}{\theta_a} \bigg|_{\theta = 0} = 0.
+\]
+For any $a$ and $b$
+\[
+  [g_a, g_b] = \iu f_{abc}g_c
+\]
+where $f_{abc}$ is the structure constant.
+We define
+\begin{equation}
+  J_\pm = J_1 \pm \iu J_2
+\end{equation}
+\paragraph{Quiz}
+Compute
+\begin{gather}
+  [J_3, J_\pm] = J_\pm,\\
+  [J_+, J_-] = 2J_3
+\end{gather}
+Given
+\[
+  [J_1, J_2] = \iu J_3, \quad
+  [J_a, J_b] = \iu\epsilon_{abc} J_c,
+\]
+which implies the fact $V \times V \to V$.
+We can also write
+\[
+  J_3J_\pm = J_\pm(J_3 \pm 1), \quad
+  J_-J_+ = J_+J_- - 2J_3.
+\]
+The action on something else
+\[
+  J_3\ket|m> = m\ket|m>, \quad
+  J_+\ket|m> = c_{m+1}\ket|m + 1>
+\]
+where we choose $C_{m+1} \in \mathbb R$.
+Then,
+\paragraph{Quiz}
+\[
+  J_-\ket|m + 1> = c_{m+1}\ket|m>
+\]
+Start from
+\[
+  \braket<m|J_-|m + 1>
+= \braket<J_+m|m+1> = c_{m+1} = c_{m+1}' \braket<mn>
+\]
+where $J_+ = J_-^\dagger$.
+With this, we can think about the following
+\[
+  c_{m+1}^2 = \braket<m|J_-J_+|m>
+= \braket<m|J_+J_-|m> - 2\braket<m|J_3|m> c_m^2 - 2m
+\]
+and we obtain the recursive relation
+\[
+  c_{j+1}^2 = c_m^2 - 2(j + j - 1 + \cdots + m)
+\]
+Taking $c_{j+1}^2 = 0$, then the sum becomes
+\[
+  c_m = \sqrt{(j + m)(j - m + 1)}
+\]
+For fixed $j$, the solution
+\[
+  c_m = 0 \Rightarrow
+  \begin{cases}
+    m = j + 1,  & J_+ \ket|j>  = 0,\\
+    m = -j,     & J_- \ket|-j> = 0
+  \end{cases}
+\]
+Denote the set
+\[
+  \{j, j - 1, j - 2, \cdots, j\}, \quad
+  2j = j - (-j) \in \mathbb Z.
+\]
+Also
+\[
+  c_m^2 = j(j + 1) - m(m - 1)
+\]
+we can obtain
+\[
+  \braket<m|J_+J_-|m>
+= j(j + 1) + \braket<m|(J_3^2 - J_3)|m>,
+\]
+So
+\[
+  J_+J_- + J_3^2 - J_3
+= (J_1 + \iu J_2) (J_1 - \iu J_2) + J_3^2 - J_3
+= J_1^2 + J_2^2 + J_3^2 = J^2
+\]
+So, the equation now becomes
+\[
+  \braket<m|J^2|m> = j(j + 1).
+\]
+Suppose $\braket<m'|J^2|m> \propto \delta_{mm'}$.
+The irrep labeled by ``$j$''
+\[
+  \{\ket|j>, \ket|j - 1>, \cdots, \ket|-j>\}
+= \{\ket|j,m>, m = j, \cdots, -j\}.
+\]
+What does $\{\ket|j, m>\}$ look like?
+
+The spherical Harmonics.
+Consider the function space $\{f(\bm r)\}$.
+\[
+  \hat L_x = \hat y\hat k_z - \hat z\hat k_y
+= -\iu(y\pdif z - z\pdif y) \qq{under} \{\ket|\bm r>\},
+\]
+and $\hat L_\pm = \hat L_x \pm \iu \hat L_y$.
+We are going to the spherical coordinate ($r$, $\theta$, $\phi$).
+\begin{align*}
+  L_z   & = -\iu\pdif\phi,\\
+  L_\pm & = \upe^{\pm\iu\phi}
+    (\pm\pdif\theta + \iu\frac{\cos\theta}{\sin\theta}\pdif\phi).
+\end{align*}
+Look at the eigenstate of $L_z$.
+\[
+  L_z f_m(r,\theta,\phi) = m f_m(r,\theta,\phi).
+\]
+Separate $f_m(r,\theta,\phi) = \upe^{\iu m\phi}f(r,\theta)$.
+
+For $m = 0$, $f(0)$;
+$j = 0$: $L_\pm f(0) = 0$.
+Means $f$ now is constant with respect to $\theta$.
+This also say that for $j = 0$ rep, $\{\ket|0, 0>\} \to \phi$ with respect to both $\theta$ and $\phi$.
+\[
+  f(\theta,\phi) = \upe^{\iu m\phi} f(\theta), \quad
+  L_\pm = f_0(\theta, \phi) = \pm\upe^{\pm\iu\phi f'(\theta)}
+\]
+Starting $j = 1$
+\[
+  \{\ket|j = m = 1>\},\quad
+  \{\ket|j = m = 0>\},\quad
+  \{\ket|j = m = -1>\},
+\]
+For $j = 1$, $f_0(\theta,\phi) = f(\theta)$.
+Take $L = f_0(\theta,\phi) = \pm\upe^{\pm\iu\\phi f'(\theta)}$
+\[
+  L_\pm^2 f_0(\theta, \phi), \quad
+  L_+^2f_2 = L_+(\upe^{\iu\phi} f'(\theta))
+\]
+To calculate
+\[
+  L_+^2f_0
+= L_+(\upe^{\iu\phi} f'(\theta))
+= \upe^{\iu2\phi}\ab(f''(0) - \frac{\cos\theta}{\sin\theta}f'(\theta)) = 0
+\]
+We can guess the solution
+\[
+  f'(\theta) = -\sin\theta, \quad f(\theta) = \cos\theta
+\]
+Define
+\[
+  F_0(\theta, \phi) = \tilde z, \quad
+  F_{\pm1}(\theta, \phi) = \tilde x \pm \iu \tilde y.
+\]
+\[
+  L_a(F(\theta,\phi) G(\theta,\phi))
+= (L_aF)G + F(L_aG)
+\]
+If denote
+\[
+  \ket|j=1,m=1> \to F_{+1},\
+  \ket|j=1,m=0> \to F_{0},\
+  \ket|j=1,m=-1> \to F_{-1}
+\]
+Then,
+\[
+  L_zF_0 = 0, \quad
+  L_z F_{\pm1} = \pm F_{\pm1}, \quad
+  L_\pm F_0 \sim F_\pm, \quad
+  L_+ F_+ = 0, \quad
+  L_- F_- = 0.
+\]
+In total,
+\[
+  L_z(F_0^n) = 0, \quad
+  L_\pm(F_0^n) \sim F_\pm F_0^{n-1}, \quad
+  (L_\pm)^n (F_0^n) \sim F_\pm^n, \quad
+  (L_\pm)^{n+1}(F_0^n) = 0
+\]
+
+\paragraph{Adding AM}
+
+``Combination'' of irreps (of SO(3))
+\[
+  \{\ket|l,m_l;s,m_s>\}, \quad
+  \{
+    \ket|p, m = +1; \uparrow>,
+    \ket|m = 0; \downarrow>, \cdots
+  \}
+\]
+Both of them are irreducible representations.
+\[
+  \{\ket|l,m;s,m_s>\} = V_l \otimes V_s.
+\]
+In the tensor space
+\[
+  J_a = J_a^{(j_1)} \otimes \identity^{(j_2)}
++ \identity^{(j_1)} \otimes \identity J_a^{(j_2)}
+\]
+The old universal equation
+\[
+  [J_a, J_b] = \iu\epsilon_{abc} J_c
+\]
+but $[J_a\otimes\identity, \identity \otimes J_b] = 0$.
+It is because
+\[
+  (A\otimes B) (C\otimes D) = (AC) \otimes (BD)
+\]
+which means that $[J_i, \identity] = 0$.
+\[
+  J^2 = J_1^2 + J_2^2 + J_3^2 = J^{(j_1)^2} + J^{(j_2)^2}
++ 2\vec J^{(j_1)} \cdot \vec J^{(j_2)}
+\]
+where the vector arrows means $J_1^{(j_1)} \otimes J_1^{(j_2)} + (1\to 2) + (1\to 3)$.
+\begin{example}
+  \[
+    V_\frac12\otimes V_\frac12 = \operatorname{span}(
+    \{\ket|\uparrow\uparrow>, \ket|\uparrow\downarrow>,
+      \ket|\downarrow\uparrow>, \ket|\downarrow\downarrow>\})
+  \]
+  where $\ket|\uparrow\uparrow> = \ket|\uparrow> \otimes \ket|\uparrow>$.
+  \[
+    J_3\ket|\uparrow\uparrow>
+  = (J_3\ket|\uparrow>) \otimes \ket|\uparrow>
+  + \ket|\uparrow> \otimes (J_3\ket|\uparrow>) = \ket|\uparrow\uparrow>
+  \]
+  We have already derived that
+  \[
+    J_- \ket|m> = c_m\ket|m - 1>, \qq{where}
+    c_m = \sqrt{(j+m(j-m+1))}
+  \]
+  All the $j = \frac12$, $c_{\pm\frac12} = 1\ \text{or}\ 0$.
+  With $J_-\ket|\uparrow> = \ket|\downarrow>$,
+  $J_+\ket|\downarrow> = \ket|\uparrow>$, 
+  \[
+    J_-\ket|\uparrow\uparrow>
+  = \ket|\downarrow\uparrow> + \ket|\uparrow\downarrow>, \quad
+    J_-^2\ket|\uparrow\uparrow>
+  = \ket|\downarrow\downarrow>
+  \]
+  In this case, we have a chain with
+  \[
+    \ket|\uparrow\uparrow>, \quad
+    \frac1{\sqrt2}(\ket|\uparrow\downarrow> + \ket|\downarrow\uparrow>),\quad
+    \ket|\downarrow\downarrow>
+  \]
+  from top to bottom.
+  But we are in the 4 dimensional space, so the other should be
+  $\ket|\uparrow\downarrow> - \ket|\downarrow\uparrow>$.
+  $J_{3,\pm}(\quad) = 0$.
+  This single state belongs to $j = 0$ irrep, and
+  $\ket|\downarrow\downarrow>$ belongs to $j = 1$.
+  \[
+    V_{\frac12} \otimes V_{\frac12} = V_1 \oplus V_0, \quad
+    \frac12 \times \frac12 = 1 + 0.
+  \]
+\end{example}
+\paragraph{Summary}
+We have
+\begin{center}
+  \begin{tikzpicture}
+    \shade (-1,1) circle (.1)
+     node [left] {$\ket|\frac12>$}
+     node [above] {$\ket|\frac12> \otimes \ket|-\frac12>$};
+    \shade (1,1) circle (.1)
+     node [right] {$\ket|\uparrow\uparrow>$}
+     node [above] {$\ket|\frac12>\otimes\ket|\frac12>$};
+    \shade (-1,-1) circle (.1)
+     node [left] {$\ket|-\frac12>$} node [below] {$\ket|\downarrow\downarrow>$};
+    \shade (1,-1) circle (.1)
+     node [below] {$\ket|\frac12>$} node [right] {$\ket|\downarrow\uparrow>$};
+    \draw [->] (1,1) -- node [below right] {$J_-$} (.2,.2);
+    \draw (-.2,-.2) -- node [below right] {$J_-$} (-1,-1);
+  \end{tikzpicture}
+\end{center}
+The three $\ket|\uparrow\uparrow>$,
+    $\frac1{\sqrt2}(\ket|\uparrow\downarrow> + \ket|\downarrow\uparrow>)$,
+    $\ket|\downarrow\downarrow>$
+are called the spin triplet, and the other single one is called the spin singlet.
+
+We can take it into a grid
+\begin{center}
+  \includegraphics[width = \linewidth]{tensor}
+\end{center}
+By adding numbers to the vertical and horizontal side of the grid, there are
+$(2j_1 + 1) \times (2j_1 + 1)$ intersections, with $j_1 + j_2$ irrep;
+or a new rep from a new site to generate $j_1 + j_2 - 1$ irrep.
+The states will eventually decompose to
+\[
+  j_1 \times j_2 = (j_1 + j_2) + (j_1 + j_2 - 1) + \cdots + |j_1 - j_2|.
+\]
 
 \section{Gauge}
